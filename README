@@ -1,0 +1,48 @@
+/******************************************************************************/
+/* Module ..... README                                                        */
+/* Author ..... Neil Simon                                                    */
+/* Modified ... 06/07/2011                                                    */
+/******************************************************************************/
+
+===========
+Description
+===========
+
+sgstats2phone.php was developed as a Linux command line utility.
+
+It can be run directly from a command line, or scheduled as a cron job to run periodically.
+
+It calls the specified phone number and delivers a text-to-speech message similar to:
+"send grid stats for nsimon at solidcode dot com May 10th 2011.
+ requests 44, delivered 43, invalid 1. Thank you, good bye."
+
+
+============
+Requirements
+============
+
+1. The PHP cURL library is required. I installed it on Ubuntu Linux with this command:
+
+   $ sudo apt-get install php5-curl
+
+
+2. A SendGrid account is required, which provides a username and api_key. Signup for an account at http://sendgrid.com.
+
+
+===============
+Usage / Example
+===============
+
+1. Usage ..... $ ./sgstats2phone.php {phone} {username} {api_key}
+
+2. Example ... $ ./sgstats2phone.php 3034029500 nsimon@solidcode.com MySecretApiKey
+
+
+============
+cron Example
+============
+
+This cron example runs sgstats2phone.php every evening at 8:00pm:
+
+00 20 * * * /SendGrid/sgstats2phone.php 3034029500 nsimon@solidcode.com MySecretApiKey
+
